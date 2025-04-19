@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Step 1 - Quiz</title>
-  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
   <style>
     * {
       margin: 0;
@@ -13,8 +13,8 @@
     }
 
     body {
-      font-family: 'VT323', monospace;
-      background: linear-gradient(135deg, #0f0f0f, #1a1a1a, #2e2e2e);
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
       color: white;
       display: flex;
       flex-direction: column;
@@ -25,8 +25,8 @@
     }
 
     h1 {
-      font-family: 'Press Start 2P', cursive;
-      font-size: 1.3rem;
+      font-size: 2rem;
+      font-weight: 700;
       text-align: center;
       margin-bottom: 2rem;
     }
@@ -35,7 +35,7 @@
       background: rgba(255, 255, 255, 0.05);
       backdrop-filter: blur(10px);
       border: 1px solid rgba(255, 255, 255, 0.1);
-      box-shadow: 0 10px 30px rgba(0,0,0,0.4), 0 0 20px #ff9dff25;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.4), 0 0 20px #7a00ff33;
       border-radius: 20px;
       padding: 2rem;
       max-width: 800px;
@@ -48,19 +48,26 @@
     .question {
       display: flex;
       flex-direction: column;
-      font-size: 1.1rem;
+      font-size: 1rem;
     }
 
     input {
       margin-top: 0.5rem;
-      padding: 0.5rem;
+      padding: 0.7rem;
       border-radius: 10px;
       border: none;
-      font-family: 'VT323', monospace;
+      font-family: 'Poppins', sans-serif;
       font-size: 1rem;
-      background-color: #222;
+      background-color: #2b2b2b;
       color: white;
       outline: none;
+    }
+
+    .typing {
+      margin-top: 0.3rem;
+      font-size: 0.8rem;
+      color: #aaa;
+      display: none;
     }
 
     .btn {
@@ -70,7 +77,7 @@
       border: none;
       border-radius: 12px;
       color: white;
-      font-family: 'VT323', monospace;
+      font-family: 'Poppins', sans-serif;
       font-size: 1rem;
       cursor: pointer;
       transition: all 0.3s ease;
@@ -90,40 +97,55 @@
   <div class="card" id="quiz">
     <!-- QUESTIONS -->
     <div class="question">1. What is Wingerson's favorite color?
-      <input type="text" id="q1" />
+      <input type="text" id="q1" oninput="showTyping(this)">
+      <span class="typing">Typing...</span>
     </div>
     <div class="question">2. What game did you first play together?
-      <input type="text" id="q2" />
+      <input type="text" id="q2" oninput="showTyping(this)">
+      <span class="typing">Typing...</span>
     </div>
     <div class="question">3. What nickname do you call her?
-      <input type="text" id="q3" />
+      <input type="text" id="q3" oninput="showTyping(this)">
+      <span class="typing">Typing...</span>
     </div>
     <div class="question">4. What's her favorite animal?
-      <input type="text" id="q4" />
+      <input type="text" id="q4" oninput="showTyping(this)">
+      <span class="typing">Typing...</span>
     </div>
     <div class="question">5. Name of your Minecraft server?
-      <input type="text" id="q5" />
+      <input type="text" id="q5" oninput="showTyping(this)">
+      <span class="typing">Typing...</span>
     </div>
     <div class="question">6. Which anime is she obsessed with?
-      <input type="text" id="q6" />
+      <input type="text" id="q6" oninput="showTyping(this)">
+      <span class="typing">Typing...</span>
     </div>
     <div class="question">7. Favorite song lyric (just a word)?
-      <input type="text" id="q7" />
+      <input type="text" id="q7" oninput="showTyping(this)">
+      <span class="typing">Typing...</span>
     </div>
     <div class="question">8. What food does she love most?
-      <input type="text" id="q8" />
+      <input type="text" id="q8" oninput="showTyping(this)">
+      <span class="typing">Typing...</span>
     </div>
     <div class="question">9. Her favorite emote?
-      <input type="text" id="q9" />
+      <input type="text" id="q9" oninput="showTyping(this)">
+      <span class="typing">Typing...</span>
     </div>
     <div class="question">10. When is her birthday? (dd-mm)
-      <input type="text" id="q10" />
+      <input type="text" id="q10" oninput="showTyping(this)">
+      <span class="typing">Typing...</span>
     </div>
 
     <button class="btn" onclick="checkAnswers()">Submit</button>
   </div>
 
   <script>
+    function showTyping(input) {
+      const typingSpan = input.nextElementSibling;
+      typingSpan.style.display = input.value.length > 0 ? 'inline-block' : 'none';
+    }
+
     function checkAnswers() {
       const answers = {
         q1: "purple",

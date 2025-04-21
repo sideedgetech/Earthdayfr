@@ -14,7 +14,7 @@
       background: linear-gradient(135deg, #0a0f1d, #121212, #1e1b24, #0c0c0c);
       background-size: 400% 400%;
       animation: gradientShift 20s ease infinite;
-      color: white;  
+      color: white;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
@@ -67,7 +67,8 @@
       background: rgba(40, 40, 50, 0.2);
       border-radius: 20px;
       padding: 20px;
-      width: 340px;
+      max-width: 340px;
+      min-width: 280px;
       box-shadow: 0 12px 28px rgba(0, 0, 0, 0.5);
       backdrop-filter: blur(14px) brightness(1.1);
       transition: transform 0.5s ease, box-shadow 0.5s ease;
@@ -77,6 +78,7 @@
       align-items: center;
       text-align: center;
       cursor: pointer;
+      word-wrap: break-word;
     }
 
     .card:hover {
@@ -94,6 +96,7 @@
 
     .card-text {
       font-size: 1.5em;
+      word-break: break-word;
     }
 
     .card:hover .card-text {
@@ -138,52 +141,4 @@
   <div class="subtitle">OK FINE HAPPY BIRTHDAY WINGER!</div>
 
   <div class="card-container">
-    <div class="card"><div class="card-title">-Sidieboiyeet</div><div class="card-text">avani
-ur super pookie and literally my best friend in the whole world (hahaha L pakshi (jk))
-dont stop being how u are
-no words could attempt to quantify how much i care about, value and cherish you
-im 100% sure its like us 3 on one side and other friendships on another side
-im sorry for bullying you so much
-not really tbh but 
-formalities
-thanks for being there for me so much
-drama queen lookin ahh
-pakshi reciprocates what im saying btw
-he is just scared to say it
-also my favourite song isnt feel good inc. anymore
-it's SWEET / I THOUGHT YOU WANTED TO DANCE - tyler, the creaotr
-</div></div>
-    <div class="card"><div class="card-title">-Asmi</div><div class="card-text">Avani, the person who i am most grateful to have in life. You never fail to make me feel like a special person. !0 years of friendship and never once have I felt out of place when I am with you. Its True!!. Even though you like to bully me (hehehe), I always tell myself- 'Its how she expresses herself to me'. You said so yourself! Just remember I'll always be there by your side no matter what.
-</div></div>
-    <div class="card"><div class="card-title">-laraib</div><div class="card-text">The quiet genius.</div></div>
-    <div class="card"><div class="card-title">-zayn</div><div class="card-text">Brainstorm wizard.</div></div>
-    <div class="card"><div class="card-title">-aizaz</div><div class="card-text">Always cracking the code.</div></div>
-    <div class="card"><div class="card-title">-noor</div><div class="card-text">Unseen but unbeatable.</div></div>
-    <div class="card"><div class="card-title">-hassan</div><div class="card-text">Knows too much.</div></div>
-    <div class="card"><div class="card-title">-zoha</div><div class="card-text">The stealth player.</div></div>
-    <div class="card"><div class="card-title">-sara</div><div class="card-text">Crafts puzzles in her sleep.</div></div>
-    <div class="card"><div class="card-title">-jawad</div><div class="card-text">Nothing gets past him.</div></div>
-    <div class="card"><div class="card-title">-faizan</div><div class="card-text">Thinks 5 layers deep.</div></div>
-    <div class="card"><div class="card-title">-mehreen</div><div class="card-text">The silent storm.</div></div>
-    <div class="card"><div class="card-title">-rayyan</div><div class="card-text">He's in every file.</div></div>
-    <div class="card"><div class="card-title">-maliha</div><div class="card-text">Solves riddles in reverse.</div></div>
-  </div>
-
-  <div class="prize-message">A special prize is waiting for u<br>dm me you nerd</div>
-
-  <script>
-    const canvas = document.querySelector(".confetti-canvas");
-    const confettiInstance = confetti.create(canvas, { resize: true, useWorker: true });
-
-    setInterval(() => {
-      confettiInstance({
-        particleCount: 3,
-        angle: 90,
-        spread: 120,
-        origin: { x: Math.random(), y: 0 },
-        colors: ['#ff0', '#0ff', '#f0f', '#0f0', '#00f', '#f00']
-      });
-    }, 150);
-  </script>
-</body>
-</html>
+    <div class="card"><div class="card-title">-Sidieboiyeet</div><div class="card-text">avani ur super pookie and literally my best friend in the whole world (hahaha L pakshi (jk)) dont stop being how u are no words

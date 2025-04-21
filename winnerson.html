@@ -3,26 +3,72 @@
 <head>
   <meta charset="UTF-8">
   <title>You Cracked It 🔓</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
   <style>
     body {
-      background: #0d0d0d;
+      background: linear-gradient(to bottom right, #0f2027, #203a43, #2c5364);
       color: #fff;
       font-family: 'Courier New', monospace;
+      margin: 0;
+      padding: 2rem;
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 2rem;
     }
 
-    .typing {
+    h1 {
+      font-size: 2.5rem;
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+
+    .confetti {
+      position: fixed;
+      top: 0;
+      left: 0;
       width: 100%;
-      max-width: 600px;
-      font-size: 1.3rem;
+      height: 100%;
+      pointer-events: none;
+      z-index: 999;
+    }
+
+    .carousel {
+      position: relative;
+      width: 90%;
+      max-width: 800px;
+      display: flex;
+      overflow-x: scroll;
+      scroll-snap-type: x mandatory;
+      gap: 1rem;
+      padding: 2rem 0;
+    }
+
+    .card {
+      flex: 0 0 80%;
+      scroll-snap-align: center;
+      background: rgba(255, 255, 255, 0.1);
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      border-radius: 15px;
+      padding: 2rem;
+      text-align: center;
+      backdrop-filter: blur(5px);
+      font-size: 1.2rem;
+      position: relative;
+    }
+
+    .card .name {
+      font-size: 0.9rem;
+      opacity: 0.7;
+      margin-bottom: 1rem;
+    }
+
+    .card .typing {
+      display: inline-block;
+      border-right: 2px solid #fff;
       white-space: nowrap;
       overflow: hidden;
-      border-right: 2px solid #fff;
-      animation: typing 3s steps(50, end), blink .75s step-end infinite;
-      margin-bottom: 2rem;
+      font-size: 1.5rem;
+      animation: typing 2s steps(40, end), blink .75s step-end infinite;
     }
 
     @keyframes typing {
@@ -35,81 +81,76 @@
       50% { border-color: white }
     }
 
-    .cards {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 1rem;
-      margin-bottom: 2rem;
-    }
-
-    .card {
-      background: #1a1a1a;
-      border: 1px solid #444;
-      border-radius: 12px;
-      padding: 1rem;
-      width: 200px;
+    .footer {
+      margin-top: 2rem;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.2rem;
       text-align: center;
-      opacity: 0;
-      transform: translateY(20px);
-      animation: appear 0.6s ease forwards;
-    }
-
-    .card:nth-child(1) { animation-delay: 0.5s }
-    .card:nth-child(2) { animation-delay: 1s }
-    .card:nth-child(3) { animation-delay: 1.5s }
-    .card:nth-child(4) { animation-delay: 2s }
-    .card:nth-child(5) { animation-delay: 2.5s }
-    .card:nth-child(6) { animation-delay: 3s }
-    .card:nth-child(7) { animation-delay: 3.5s }
-    .card:nth-child(8) { animation-delay: 4s }
-    .card:nth-child(9) { animation-delay: 4.5s }
-    .card:nth-child(10) { animation-delay: 5s }
-
-    @keyframes appear {
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .gift {
-      font-size: 1.4rem;
-      background: #fff;
-      color: #000;
-      padding: 1rem 2rem;
-      border-radius: 10px;
-      animation: pulse 2s infinite;
-    }
-
-    @keyframes pulse {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.05); }
+      color: #a2d2ff;
     }
   </style>
 </head>
 <body>
 
-  <div class="typing">
-    Whoa... you actually cracked the image puzzle. That’s impressive.
+  <h1>Damn bro you tryhard how did you win</h1>
+  <canvas class="confetti"></canvas>
+
+  <div class="carousel">
+    <div class="card">
+      <div class="name">Ambreen</div>
+      <div class="typing">🧠 Always 10 steps ahead.</div>
+    </div>
+    <div class="card">
+      <div class="name">Sid</div>
+      <div class="typing">🎯 Sharp shooter, logic master.</div>
+    </div>
+    <div class="card">
+      <div class="name">Zara</div>
+      <div class="typing">🎭 Brings mystery wherever she goes.</div>
+    </div>
+    <div class="card">
+      <div class="name">Ayaan</div>
+      <div class="typing">🎸 Cool even in chaos.</div>
+    </div>
+    <div class="card">
+      <div class="name">Reem</div>
+      <div class="typing">📚 Secretly the mastermind.</div>
+    </div>
+    <div class="card">
+      <div class="name">Dani</div>
+      <div class="typing">🧩 Puzzle prodigy.</div>
+    </div>
+    <div class="card">
+      <div class="name">Fariha</div>
+      <div class="typing">💡 Lightbulb moments, always.</div>
+    </div>
+    <div class="card">
+      <div class="name">Zay</div>
+      <div class="typing">🎮 Gamer brain, always winning.</div>
+    </div>
+    <div class="card">
+      <div class="name">Noor</div>
+      <div class="typing">🌌 Quiet, but cosmic.</div>
+    </div>
+    <div class="card">
+      <div class="name">YOU</div>
+      <div class="typing">🔥 You cracked it all.</div>
+    </div>
   </div>
 
-  <div class="cards">
-    <div class="card">🧠 Ambreen — Always 10 steps ahead.</div>
-    <div class="card">🎯 Sid — Sharp shooter, logic master.</div>
-    <div class="card">🎭 Zara — Brings mystery wherever she goes.</div>
-    <div class="card">🎸 Ayaan — Cool even in chaos.</div>
-    <div class="card">📚 Reem — Secretly the mastermind.</div>
-    <div class="card">🧩 Dani — Puzzle prodigy.</div>
-    <div class="card">💡 Fariha — Lightbulb moments, always.</div>
-    <div class="card">🎮 Zay — Gamer brain, always winning.</div>
-    <div class="card">🌌 Noor — Quiet, but cosmic.</div>
-    <div class="card">🔥 YOU — The one who cracked it all.</div>
-  </div>
+  <div class="footer">Happy Earth's Day, winger. You earned a gift :) DM me.</div>
 
-  <div class="gift">
-    🎁 There’s a little gift waiting for you... because you won.
-  </div>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  <script>
+    const canvas = document.querySelector('.confetti');
+    const myConfetti = confetti.create(canvas, { resize: true, useWorker: true });
+
+    myConfetti({
+      particleCount: 150,
+      spread: 180,
+      origin: { y: 0.3 }
+    });
+  </script>
 
 </body>
 </html>

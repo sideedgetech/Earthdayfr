@@ -14,7 +14,7 @@
       background: linear-gradient(135deg, #0a0f1d, #121212, #1e1b24, #0c0c0c);
       background-size: 400% 400%;
       animation: gradientShift 20s ease infinite;
-      color: white;
+      color: white;  
       min-height: 100vh;
       display: flex;
       flex-direction: column;
@@ -67,8 +67,7 @@
       background: rgba(40, 40, 50, 0.2);
       border-radius: 20px;
       padding: 20px;
-      max-width: 340px;
-      min-width: 280px;
+      width: 340px;
       box-shadow: 0 12px 28px rgba(0, 0, 0, 0.5);
       backdrop-filter: blur(14px) brightness(1.1);
       transition: transform 0.5s ease, box-shadow 0.5s ease;
@@ -78,7 +77,6 @@
       align-items: center;
       text-align: center;
       cursor: pointer;
-      word-wrap: break-word;
     }
 
     .card:hover {
@@ -96,7 +94,6 @@
 
     .card-text {
       font-size: 1.5em;
-      word-break: break-word;
     }
 
     .card:hover .card-text {
@@ -133,7 +130,7 @@
 <body>
   <audio autoplay loop>
     <source src="https://www.fesliyanstudios.com/play-mp3/387" type="audio/mpeg">
-    Your browser does not support the audio element.
+    Your browser does not support the audio element. Shift to Chrome already Edge is Outdated.
   </audio>
   <canvas class="confetti-canvas"></canvas>
 
@@ -141,4 +138,39 @@
   <div class="subtitle">OK FINE HAPPY BIRTHDAY WINGER!</div>
 
   <div class="card-container">
-    <div class="card"><div class="card-title">-Sidieboiyeet</div><div class="card-text">avani ur super pookie and literally my best friend in the whole world (hahaha L pakshi (jk)) dont stop being how u are no words
+    <div class="card"><div class="card-title">-Manzz</div><div class="card-text">You are the dancing bean, young and sweet only 14. 😍😍
+</div></div>
+    <div class="card"><div class="card-title">-Asmi</div><div class="card-text">Avani, the person who I am most grateful to have in life. You never fail to make me feel like a special person. 10 years of friendship and never once have I felt out of place when I am with you. Its True!!. Even though you like to bully me (hehehe), I always tell myself- 'Its how she expresses herself to me'. You said so yourself! Just remember I'll always be there by your side no matter what.
+</div></div>
+    <div class="card"><div class="card-title">-Pringle</div><div class="card-text">You are cool bullyable smart talented kind-hearted and my bestie (this is js for her bday we'll start bullying after 22nd)
+</div></div>
+    <div class="card"><div class="card-title">- Pro Jukerson</div><div class="card-text">There once was a girl called avani, Now she is a nerd called winger. (btw real jukerson here watch out for fake ones)</div></div>
+    <div class="card"><div class="card-title">-Aarya</div><div class="card-text">i love you as a sister and a friend I hope that we always stay friends meri pyaari gawar student and telepathy sister</div></div>
+    <div class="card"><div class="card-title">-Sid G.</div><div class="card-text">Heppy birthdayyyyyyyy🔥🔥🔥🔥🔥</div></div>
+    <div class="card"><div class="card-title">-Sidieboiyeet</div><div class="card-text">thanks for being in my life bean girl keep eating beans and being bad at guitar (scrolling down is an amazing feature)</div></div>
+    <div class="card"><div class="card-title">-  </div><div class="card-text">The stealth player.</div></div>
+    <div class="card"><div class="card-title">-sara</div><div class="card-text">Crafts puzzles in her sleep.</div></div>
+    <div class="card"><div class="card-title">-jawad</div><div class="card-text">Nothing gets past him.</div></div>
+    <div class="card"><div class="card-title">-faizan</div><div class="card-text">Thinks 5 layers deep.</div></div>
+    <div class="card"><div class="card-title">-mehreen</div><div class="card-text">The silent storm.</div></div>
+    <div class="card"><div class="card-title">-Siddieboiyeet (Big One)</div><div class="card-text">He's in every file.</div></div>
+  </div>
+
+  <div class="prize-message">A special prize is waiting for u<br>dm me you nerd</div>
+
+  <script>
+    const canvas = document.querySelector(".confetti-canvas");
+    const confettiInstance = confetti.create(canvas, { resize: true, useWorker: true });
+
+    setInterval(() => {
+      confettiInstance({
+        particleCount: 3,
+        angle: 90,
+        spread: 120,
+        origin: { x: Math.random(), y: 0 },
+        colors: ['#ff0', '#0ff', '#f0f', '#0f0', '#00f', '#f00']
+      });
+    }, 150);
+  </script>
+</body>
+</html>

@@ -1,76 +1,106 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>You Cracked It 🔓</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Congrats Wingerson</title>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Orbitron:wght@500&family=Share+Tech+Mono&family=VT323&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Orbitron:wght@500&display=swap');
-
     body {
-      background: linear-gradient(to bottom right, #0f2027, #2c5364);
-      color: #fff;
-      font-family: 'Courier New', monospace;
       margin: 0;
       padding: 0;
+      font-family: 'Orbitron', sans-serif;
+      background: linear-gradient(135deg, #0a0f1d, #121212, #1e1b24, #0c0c0c);
+      background-size: 400% 400%;
+      animation: gradientShift 20s ease infinite;
+      color: white;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       overflow-x: hidden;
+      position: relative;
+    }
+
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
     }
 
     h1 {
+      font-family: 'Press Start 2P', cursive;
+      font-size: 1.5em;
       text-align: center;
-      font-size: 2rem;
-      margin: 2rem 0;
+      margin: 40px 20px 10px;
+      animation: glitch 2s infinite;
     }
 
-    .confetti {
-      position: fixed;
-      width: 100%;
-      height: 100%;
-      top: 0;
-      left: 0;
-      pointer-events: none;
-      z-index: 1000;
+    .subtitle {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 1.2em;
+      text-align: center;
+      margin-bottom: 20px;
+      color: #ffc107;
     }
 
-    .carousel-container {
+    @keyframes glitch {
+      0% { text-shadow: 2px 0 red, -2px 0 cyan; }
+      20% { text-shadow: -2px 0 lime, 2px 0 magenta; }
+      40% { text-shadow: 2px 0 blue, -2px 0 yellow; }
+      60% { text-shadow: -2px 0 red, 2px 0 cyan; }
+      80% { text-shadow: 2px 0 lime, -2px 0 magenta; }
+      100% { text-shadow: -2px 0 blue, 2px 0 yellow; }
+    }
+
+    .card-container {
       display: flex;
-      overflow: hidden;
+      flex-wrap: wrap;
+      gap: 20px;
       justify-content: center;
-      align-items: center;
-      height: 300px;
-      position: relative;
-      margin-bottom: 2rem;
+      padding: 30px 20px;
+      z-index: 2;
     }
 
     .card {
-      flex: 0 0 300px;
-      margin: 0 10px;
-      padding: 1rem;
+      background: rgba(40, 40, 50, 0.2);
       border-radius: 20px;
-      background: rgba(255, 255, 255, 0.1);
-      border: 2px solid rgba(255, 255, 255, 0.3);
+      padding: 20px;
+      width: 340px;
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(14px) brightness(1.1);
       transition: transform 0.5s ease, box-shadow 0.5s ease;
-      position: relative;
-      opacity: 0.8;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      cursor: pointer;
     }
 
-    .card.active {
-      transform: scale(1.1);
-      box-shadow: 0 0 20px #fff;
-      opacity: 1;
+    .card:hover {
+      transform: scale(1.2) rotate(0.5deg);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7);
+      z-index: 2;
     }
 
-    .card h3 {
-      font-size: 1rem;
-      opacity: 0.8;
-      margin-bottom: 0.5rem;
+    .card-title {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.6em;
+      opacity: 0.3;
+      margin-bottom: 10px;
     }
 
-    .card p.typing {
-      font-size: 1.4rem;
-      white-space: nowrap;
+    .card-text {
+      font-size: 1.5em;
+    }
+
+    .card:hover .card-text {
       overflow: hidden;
-      border-right: 2px solid white;
-      animation: typing 2s steps(40, end), blink .75s step-end infinite;
+      white-space: nowrap;
+      border-right: 2px solid #fff;
+      animation: typing 3s steps(30, end) 1 normal both;
     }
 
     @keyframes typing {
@@ -78,67 +108,67 @@
       to { width: 100% }
     }
 
-    @keyframes blink {
-      from, to { border-color: transparent }
-      50% { border-color: white }
+    canvas.confetti-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
     }
 
-    .message {
-      font-family: 'Orbitron', sans-serif;
+    .prize-message {
+      font-family: 'VT323', monospace;
+      font-size: 2em;
+      margin: 40px 20px 60px;
       text-align: center;
-      font-size: 1.2rem;
-      margin-top: 2rem;
+      color: #00ffff;
     }
   </style>
 </head>
 <body>
+  <audio autoplay loop>
+    <source src="https://www.fesliyanstudios.com/play-mp3/387" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+  <canvas class="confetti-canvas"></canvas>
 
-<h1>Damn bro you tryhard how did you win</h1>
-<canvas class="confetti"></canvas>
+  <h1>Damn You tryhard</h1>
+  <div class="subtitle">OK FINE HAPPY BIRTHDAY WINGER!</div>
 
-<div class="carousel-container" id="carousel">
-  <div class="card"><h3>Ambreen</h3><p class="typing">🧠 Always 10 steps ahead.</p></div>
-  <div class="card"><h3>Sid</h3><p class="typing">🎯 Sharp shooter, logic master.</p></div>
-  <div class="card"><h3>Zara</h3><p class="typing">🎭 Brings mystery wherever she goes.</p></div>
-  <div class="card"><h3>Ayaan</h3><p class="typing">🎸 Cool even in chaos.</p></div>
-  <div class="card"><h3>Reem</h3><p class="typing">📚 Secretly the mastermind.</p></div>
-  <div class="card"><h3>Dani</h3><p class="typing">🧩 Puzzle prodigy.</p></div>
-  <div class="card"><h3>Fariha</h3><p class="typing">💡 Lightbulb moments, always.</p></div>
-  <div class="card"><h3>Zay</h3><p class="typing">🎮 Gamer brain, always winning.</p></div>
-  <div class="card"><h3>Noor</h3><p class="typing">🌌 Quiet, but cosmic.</p></div>
-  <div class="card"><h3>YOU</h3><p class="typing">🔥 The one who cracked it all.</p></div>
-</div>
+  <div class="card-container">
+    <div class="card"><div class="card-title">-ambreen</div><div class="card-text">Always 10 steps ahead.</div></div>
+    <div class="card"><div class="card-title">-sid</div><div class="card-text">Mastermind behind the chaos.</div></div>
+    <div class="card"><div class="card-title">-laraib</div><div class="card-text">The quiet genius.</div></div>
+    <div class="card"><div class="card-title">-zayn</div><div class="card-text">Brainstorm wizard.</div></div>
+    <div class="card"><div class="card-title">-aizaz</div><div class="card-text">Always cracking the code.</div></div>
+    <div class="card"><div class="card-title">-noor</div><div class="card-text">Unseen but unbeatable.</div></div>
+    <div class="card"><div class="card-title">-hassan</div><div class="card-text">Knows too much.</div></div>
+    <div class="card"><div class="card-title">-zoha</div><div class="card-text">The stealth player.</div></div>
+    <div class="card"><div class="card-title">-sara</div><div class="card-text">Crafts puzzles in her sleep.</div></div>
+    <div class="card"><div class="card-title">-jawad</div><div class="card-text">Nothing gets past him.</div></div>
+    <div class="card"><div class="card-title">-faizan</div><div class="card-text">Thinks 5 layers deep.</div></div>
+    <div class="card"><div class="card-title">-mehreen</div><div class="card-text">The silent storm.</div></div>
+    <div class="card"><div class="card-title">-rayyan</div><div class="card-text">He's in every file.</div></div>
+    <div class="card"><div class="card-title">-maliha</div><div class="card-text">Solves riddles in reverse.</div></div>
+  </div>
 
-<div class="message">Happy Earth's Day, winger. You earned a gift :) DM me.</div>
+  <div class="prize-message">A special prize is waiting for u<br>dm me you nerd</div>
 
-<audio autoplay loop>
-  <source src="https://cdn.pixabay.com/download/audio/2022/03/23/audio_6f2f1f7f3b.mp3?filename=happy-birthday-to-you-13533.mp3" type="audio/mpeg">
-</audio>
+  <script>
+    const canvas = document.querySelector(".confetti-canvas");
+    const confettiInstance = confetti.create(canvas, { resize: true, useWorker: true });
 
-<script>
-  // Auto slide animation with hover effect
-  const cards = document.querySelectorAll('.card');
-  let current = 0;
-
-  function setActive(index) {
-    cards.forEach(card => card.classList.remove('active'));
-    cards[index].classList.add('active');
-  }
-
-  setActive(current);
-  setInterval(() => {
-    current = (current + 1) % cards.length;
-    setActive(current);
-    document.getElementById('carousel').scrollTo({
-      left: cards[current].offsetLeft - 150,
-      behavior: 'smooth'
-    });
-  }, 4000);
-
-  cards.forEach((card, idx) => {
-    card.addEventListener('mouseenter', () => setActive(idx));
-  });
-</script>
-
+    setInterval(() => {
+      confettiInstance({
+        particleCount: 3,
+        angle: 90,
+        spread: 120,
+        origin: { x: Math.random(), y: 0 },
+        colors: ['#ff0', '#0ff', '#f0f', '#0f0', '#00f', '#f00']
+      });
+    }, 150);
+  </script>
 </body>
 </html>

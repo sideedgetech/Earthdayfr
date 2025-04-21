@@ -134,6 +134,31 @@
       typingSpan.style.display = input.value.length > 0 ? 'inline-block' : 'none';
     }
 
+    function levenshtein(a, b) {
+      const matrix = Array.from({ length: a.length + 1 }, () => []);
+      for (let i = 0; i <= a.length; i++) matrix[i][0] = i;
+      for (let j = 0; j <= b.length; j++) matrix[0][j] = j;
+
+      for (let i = 1; i <= a.length; i++) {
+        for (let j = 1; j <= b.length; j++) {
+          if (a[i - 1] === b[j - 1]) {
+            matrix[i][j] = matrix[i - 1][j - 1];
+          } else {
+            matrix[i][j] = Math.min(
+              matrix[i - 1][j] + 1,
+              matrix[i][j - 1] + 1,
+              matrix[i - 1][j - 1] + 1
+            );
+          }
+        }
+      }
+      return matrix[a.length][b.length];
+    }
+
+    function isCloseEnough(userAnswer, correctAnswer) {
+      return levenshtein(userAnswer, correctAnswer.toLowerCase()) <= 2;
+    }
+
     function checkAnswers() {
       const answers = {
         q1: ["Nerd", "nerd", "Winger", "winger"],
@@ -150,16 +175,19 @@
 
       for (let key in answers) {
         const userAnswer = document.getElementById(key).value.trim().toLowerCase();
-        if (!answers[key].includes(userAnswer)) {
+        const isCorrect = answers[key].some(answer =>
+          userAnswer === answer.toLowerCase() || isCloseEnough(userAnswer, answer)
+        );
+        if (!isCorrect) {
           allCorrect = false;
           break;
         }
       }
 
       if (allCorrect) {
-        window.location.href = "/step2";  // Redirect to the next step
+        window.location.href = "/step2";
       } else {
-        alert("Did you try getting good? WRONG ANSWERS BUDDY");
+        alert("Did you try getting good? WRONG ANSWERS BUDDY (or too many typos 💀)");
       }
     }
   </script>

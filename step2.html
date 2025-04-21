@@ -20,7 +20,7 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
+      justify-content: flex-start;
       min-height: 100vh;
       padding: 2rem;
     }
@@ -29,7 +29,47 @@
       font-size: 2rem;
       font-weight: 700;
       text-align: center;
+      margin-bottom: 1rem;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.4), 0 0 20px #7a00ff33;
+      border-radius: 20px;
+      padding: 2rem;
+      max-width: 800px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
       margin-bottom: 2rem;
+    }
+
+    .message {
+      font-size: 1.2rem;
+      text-align: center;
+    }
+
+    .btn {
+      margin-top: 1.5rem;
+      background: linear-gradient(135deg, #ff5ec9, #7040ff);
+      padding: 0.8rem 1.5rem;
+      border: none;
+      border-radius: 12px;
+      color: white;
+      font-family: 'Poppins', sans-serif;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      align-self: center;
+    }
+
+    .btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.4);
     }
 
     .special-card {
@@ -77,7 +117,18 @@
 </head>
 <body>
 
-  <h1>Step 2 - Cipher</h1>
+  <h1>Step 2: Decode the Cipher</h1>
+
+  <div class="card">
+    <div class="message">
+      <p>Here is the cipher text you need to decode:</p>
+      <p id="cipher-text">
+        Wuhhv duh srhpv wkdw wkh hubwk zulwhv rxq wkh vnb. Vnb lqfoxghv i22 udskrwr dqg erhlqj 747 grq'w irujhw.
+      </p>
+    </div>
+
+    <button class="btn" onclick="checkAnswer()">Submit Answer</button>
+  </div>
 
   <div class="special-card">
     <div class="signature">— Ambreen</div>
@@ -85,6 +136,7 @@
   </div>
 
   <script>
+    // Typewriter Effect
     const message = `This message was left just for you 💙\nOnly the wise shall pass...`;
     const typeTarget = document.getElementById("message");
 
@@ -99,32 +151,8 @@
     }
 
     window.onload = typeWriter;
-  </script>
 
-</body>
-
-  <h1>Step 2: Decode the Cipher</h1>
-
-  <div class="card">
-    <div class="message">
-      <p>Here is the cipher text you need to decode:</p>
-      <p id="cipher-text">
-        Wuhhv duh srhpv wkdw wkh hubwk zulwhv rxq wkh vnb. Vnb lqfoxghv i22 udskrwr dqg erhlqj 747 grq'w irujhw.
-      </p>
-    </div>
-
-    <button class="btn" onclick="checkAnswer()">Submit Answer</button>
-  </div>
-
-  <!-- Special message card -->
-  <div class="special-card">
-    <p><span>Happy birthday absolute best friend.</span><br>
-    You're one of my confidantes.<br>
-    Love you wider than the sky abaaaaaani 💞</p>
-  </div>
-
-  <script>
-    // Caesar Cipher Decryption function (Shift -3)
+    // Caesar Cipher Decryption Checker
     function caesarCipherDecrypt(str, shift = 3) {
       return str.split('').map(char => {
         if (/[a-zA-Z]/.test(char)) {
@@ -132,22 +160,21 @@
           let base = (char === char.toUpperCase()) ? 65 : 97;
           return String.fromCharCode(((code - base - shift + 26) % 26) + base);
         }
-        return char; // Non-alphabetic characters remain unchanged
+        return char;
       }).join('');
     }
 
-    // Function to check if the decoded message is correct
     function checkAnswer() {
       const userInput = prompt("Enter the decoded message:");
-
       const correctMessage = "Trees are poems that the earth writes upon the sky. Sky includes f22 raptor and boeing 747 don't forget";
       if (userInput.trim().toLowerCase() === correctMessage.toLowerCase()) {
         alert("Correct! Proceeding to the next step.");
-        window.location.href = "/step3"; // Redirect to step3 if the answer is correct
+        window.location.href = "/step3";
       } else {
         alert("Oops! That's not correct. Try again.");
       }
     }
   </script>
+
 </body>
 </html>

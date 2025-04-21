@@ -88,10 +88,20 @@
 
     .special-card p {
       font-size: 1.8rem; /* Larger font size for better visibility */
-      font-weight: bold; /* Make the message stand out more */
+      font-weight: 600; /* Slightly bolder font weight */
       text-align: center;
       color: #fff;
-      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Adding a slight shadow for more emphasis */
+      text-transform: uppercase; /* Make the text feel more special */
+      letter-spacing: 2px; /* Add spacing between letters */
+      word-wrap: break-word; /* Make the text wrap properly */
+      text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.4); /* Adding a slight shadow for more emphasis */
+      line-height: 1.5; /* Better line spacing */
+    }
+
+    .special-card p span {
+      font-size: 2rem; /* Make the love emoji a bit larger */
+      color: #ff4081; /* A bright color for the love emoji */
+      display: inline-block;
     }
   </style>
 </head>
@@ -112,7 +122,9 @@
 
   <!-- Special message card -->
   <div class="special-card">
-    <p>Ambreen- Happy birthday absolute best friend. You're one of my confidantes. Love you wider than the sky abaaaaaani 💞</p>
+    <p><span>Happy birthday absolute best friend.</span><br>
+    You're one of my confidantes.<br>
+    Love you wider than the sky abaaaaaani 💞</p>
   </div>
 
   <script>

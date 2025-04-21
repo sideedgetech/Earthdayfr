@@ -3,71 +3,73 @@
 <head>
   <meta charset="UTF-8">
   <title>You Cracked It 🔓</title>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Orbitron:wght@500&display=swap');
+
     body {
-      background: linear-gradient(to bottom right, #0f2027, #203a43, #2c5364);
+      background: linear-gradient(to bottom right, #0f2027, #2c5364);
       color: #fff;
       font-family: 'Courier New', monospace;
       margin: 0;
-      padding: 2rem;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+      padding: 0;
+      overflow-x: hidden;
     }
 
     h1 {
-      font-size: 2.5rem;
       text-align: center;
-      margin-bottom: 1rem;
+      font-size: 2rem;
+      margin: 2rem 0;
     }
 
     .confetti {
       position: fixed;
-      top: 0;
-      left: 0;
       width: 100%;
       height: 100%;
+      top: 0;
+      left: 0;
       pointer-events: none;
-      z-index: 999;
+      z-index: 1000;
     }
 
-    .carousel {
-      position: relative;
-      width: 90%;
-      max-width: 800px;
+    .carousel-container {
       display: flex;
-      overflow-x: scroll;
-      scroll-snap-type: x mandatory;
-      gap: 1rem;
-      padding: 2rem 0;
+      overflow: hidden;
+      justify-content: center;
+      align-items: center;
+      height: 300px;
+      position: relative;
+      margin-bottom: 2rem;
     }
 
     .card {
-      flex: 0 0 80%;
-      scroll-snap-align: center;
+      flex: 0 0 300px;
+      margin: 0 10px;
+      padding: 1rem;
+      border-radius: 20px;
       background: rgba(255, 255, 255, 0.1);
       border: 2px solid rgba(255, 255, 255, 0.3);
-      border-radius: 15px;
-      padding: 2rem;
-      text-align: center;
-      backdrop-filter: blur(5px);
-      font-size: 1.2rem;
+      transition: transform 0.5s ease, box-shadow 0.5s ease;
       position: relative;
+      opacity: 0.8;
     }
 
-    .card .name {
-      font-size: 0.9rem;
-      opacity: 0.7;
-      margin-bottom: 1rem;
+    .card.active {
+      transform: scale(1.1);
+      box-shadow: 0 0 20px #fff;
+      opacity: 1;
     }
 
-    .card .typing {
-      display: inline-block;
-      border-right: 2px solid #fff;
+    .card h3 {
+      font-size: 1rem;
+      opacity: 0.8;
+      margin-bottom: 0.5rem;
+    }
+
+    .card p.typing {
+      font-size: 1.4rem;
       white-space: nowrap;
       overflow: hidden;
-      font-size: 1.5rem;
+      border-right: 2px solid white;
       animation: typing 2s steps(40, end), blink .75s step-end infinite;
     }
 
@@ -81,76 +83,62 @@
       50% { border-color: white }
     }
 
-    .footer {
-      margin-top: 2rem;
+    .message {
       font-family: 'Orbitron', sans-serif;
-      font-size: 1.2rem;
       text-align: center;
-      color: #a2d2ff;
+      font-size: 1.2rem;
+      margin-top: 2rem;
     }
   </style>
 </head>
 <body>
 
-  <h1>Damn bro you tryhard how did you win</h1>
-  <canvas class="confetti"></canvas>
+<h1>Damn bro you tryhard how did you win</h1>
+<canvas class="confetti"></canvas>
 
-  <div class="carousel">
-    <div class="card">
-      <div class="name">Ambreen</div>
-      <div class="typing">🧠 Always 10 steps ahead.</div>
-    </div>
-    <div class="card">
-      <div class="name">Sid</div>
-      <div class="typing">🎯 Sharp shooter, logic master.</div>
-    </div>
-    <div class="card">
-      <div class="name">Zara</div>
-      <div class="typing">🎭 Brings mystery wherever she goes.</div>
-    </div>
-    <div class="card">
-      <div class="name">Ayaan</div>
-      <div class="typing">🎸 Cool even in chaos.</div>
-    </div>
-    <div class="card">
-      <div class="name">Reem</div>
-      <div class="typing">📚 Secretly the mastermind.</div>
-    </div>
-    <div class="card">
-      <div class="name">Dani</div>
-      <div class="typing">🧩 Puzzle prodigy.</div>
-    </div>
-    <div class="card">
-      <div class="name">Fariha</div>
-      <div class="typing">💡 Lightbulb moments, always.</div>
-    </div>
-    <div class="card">
-      <div class="name">Zay</div>
-      <div class="typing">🎮 Gamer brain, always winning.</div>
-    </div>
-    <div class="card">
-      <div class="name">Noor</div>
-      <div class="typing">🌌 Quiet, but cosmic.</div>
-    </div>
-    <div class="card">
-      <div class="name">YOU</div>
-      <div class="typing">🔥 You cracked it all.</div>
-    </div>
-  </div>
+<div class="carousel-container" id="carousel">
+  <div class="card"><h3>Ambreen</h3><p class="typing">🧠 Always 10 steps ahead.</p></div>
+  <div class="card"><h3>Sid</h3><p class="typing">🎯 Sharp shooter, logic master.</p></div>
+  <div class="card"><h3>Zara</h3><p class="typing">🎭 Brings mystery wherever she goes.</p></div>
+  <div class="card"><h3>Ayaan</h3><p class="typing">🎸 Cool even in chaos.</p></div>
+  <div class="card"><h3>Reem</h3><p class="typing">📚 Secretly the mastermind.</p></div>
+  <div class="card"><h3>Dani</h3><p class="typing">🧩 Puzzle prodigy.</p></div>
+  <div class="card"><h3>Fariha</h3><p class="typing">💡 Lightbulb moments, always.</p></div>
+  <div class="card"><h3>Zay</h3><p class="typing">🎮 Gamer brain, always winning.</p></div>
+  <div class="card"><h3>Noor</h3><p class="typing">🌌 Quiet, but cosmic.</p></div>
+  <div class="card"><h3>YOU</h3><p class="typing">🔥 The one who cracked it all.</p></div>
+</div>
 
-  <div class="footer">Happy Earth's Day, winger. You earned a gift :) DM me.</div>
+<div class="message">Happy Earth's Day, winger. You earned a gift :) DM me.</div>
 
-  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
-  <script>
-    const canvas = document.querySelector('.confetti');
-    const myConfetti = confetti.create(canvas, { resize: true, useWorker: true });
+<audio autoplay loop>
+  <source src="https://cdn.pixabay.com/download/audio/2022/03/23/audio_6f2f1f7f3b.mp3?filename=happy-birthday-to-you-13533.mp3" type="audio/mpeg">
+</audio>
 
-    myConfetti({
-      particleCount: 150,
-      spread: 180,
-      origin: { y: 0.3 }
+<script>
+  // Auto slide animation with hover effect
+  const cards = document.querySelectorAll('.card');
+  let current = 0;
+
+  function setActive(index) {
+    cards.forEach(card => card.classList.remove('active'));
+    cards[index].classList.add('active');
+  }
+
+  setActive(current);
+  setInterval(() => {
+    current = (current + 1) % cards.length;
+    setActive(current);
+    document.getElementById('carousel').scrollTo({
+      left: cards[current].offsetLeft - 150,
+      behavior: 'smooth'
     });
-  </script>
+  }, 4000);
+
+  cards.forEach((card, idx) => {
+    card.addEventListener('mouseenter', () => setActive(idx));
+  });
+</script>
 
 </body>
 </html>

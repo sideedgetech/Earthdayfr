@@ -114,22 +114,5 @@
     ⚠️ View on PC it wont work here mr winger
   </div>
 
-  <script>
-    const message = `she is cool bullyable smart talented kind-hearted and my bestie  \n (this is js for her bday we'll start bullying after 22nd)`;
-    const typeTarget = document.getElementById("message");
-
-    let index = 0;
-    function typeWriter() {
-      if (index < message.length) {
-        const char = message[index];
-        typeTarget.innerHTML += char === "💙" ? "<span>💙</span>" : char;
-        index++;
-        setTimeout(typeWriter, 55);
-      }
-    }
-
-    window.onload = typeWriter;
-  </script>
-
 </body>
 </html>

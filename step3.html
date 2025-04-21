@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cicade 3301</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+      color: white;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 2.2rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+    }
+
+    .image-box {
+      max-width: 90%;
+      width: 500px;
+      margin-bottom: 2rem;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+    }
+
+    .image-box img {
+      width: 100%;
+      height: auto;
+      border-radius: 20px;
+      display: block;
+    }
+
+    .special-card {
+      background: linear-gradient(135deg, rgba(0, 183, 255, 0.25), rgba(0, 117, 255, 0.25));
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.35), 0 0 30px rgba(0,183,255,0.3);
+      border-radius: 20px;
+      padding: 2rem;
+      max-width: 700px;
+      width: 100%;
+      font-family: 'Roboto Slab', serif;
+      margin-bottom: 1.5rem;
+    }
+
+    .signature {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #a7e0ff;
+      margin-bottom: 1rem;
+      text-shadow: 0 0 5px rgba(0,183,255,0.5);
+      letter-spacing: 1px;
+    }
+
+    .typewriter {
+      font-size: 1.6rem;
+      font-weight: 600;
+      color: #ffffff;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.4);
+      line-height: 1.5;
+      white-space: pre-wrap;
+      min-height: 4rem;
+    }
+
+    .typewriter span {
+      font-size: 2rem;
+      color: #66ccff;
+      display: inline-block;
+    }
+
+    .disclaimer {
+      font-size: 0.9rem;
+      margin-top: 2rem;
+      color: #cccccc;
+      font-style: italic;
+      text-shadow: 0 0 4px rgba(255,255,255,0.2);
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Step 3 - The Reveal</h1>
+
+  <div class="image-box">
+    <img src="https://via.placeholder.com/600x400?text=Your+Surprise+Image" alt="Surprise Image">
+  </div>
+
+  <div class="special-card">
+    <div class="signature">— Ambreen</div>
+    <p class="typewriter" id="message"></p>
+  </div>
+
+  <div class="disclaimer">
+    ⚠️ Best viewed on a PC, laptop, or desktop browser only.
+  </div>
+
+  <script>
+    const message = `And here lies the part of the story you only find if you're clever enough 💫\nYou're doing amazing, btw 💙`;
+    const typeTarget = document.getElementById("message");
+
+    let index = 0;
+    function typeWriter() {
+      if (index < message.length) {
+        const char = message[index];
+        typeTarget.innerHTML += char === "💙" ? "<span>💙</span>" : char;
+        index++;
+        setTimeout(typeWriter, 55);
+      }
+    }
+
+    window.onload = typeWriter;
+  </script>
+
+</body>
+</html>

@@ -107,21 +107,18 @@
     <div class="question">3. Who replies the slowest in the group?
       <input type="text" id="q3" oninput="showTyping(this)">
     </div>
-    <div class="question">4. 4. How many times have I cbed you before someone actually questioned my morals?
+    <div class="question">4. How many times have I cbed you before someone actually questioned my morals?
       <input type="text" id="q4" oninput="showTyping(this)">
-      
     </div>
     <div class="question">5. Who first coined the term "wise betray", ISTG IF YOU DONT GET IT + I read history so coined :)
       <input type="text" id="q5" oninput="showTyping(this)">
-      
     </div>
-    <div class="question">6.Whats the game that me and sid get tortured in because of you.
+    <div class="question">6. Whats the game that me and sid get tortured in because of you.
       <input type="text" id="q6" oninput="showTyping(this)">
       <span class="typing">Typing...</span>
     </div>
     <div class="question">7. Whats sid's favourite song?
       <input type="text" id="q7" oninput="showTyping(this)">
-
     </div>
     <div class="question">8. Whats the artist that you said is cool in 2024 and still like it (it sucks we all know) and you still hear?
       <input type="text" id="q8" oninput="showTyping(this)">
@@ -139,28 +136,28 @@
 
     function checkAnswers() {
       const answers = {
-        q1: "Nerd","nerd","Winger", "winger",
-        q2: "capybara","Capybara Cult", "capybara cult", "Heads knees toes",
-        q3: "jukerson","Mr. Pixel", "Aksh", "Pranjal",
-        q4: "mutiple","infinite", "infinity", "Multiple", "Infinite",
-        q5: "6THD",
-        q6: "Three Player Obby",
-        q7: "Feel Good inc", "feel good inc",
-        q8: "Billie Eilish","billie eilish",        
+        q1: ["Nerd", "nerd", "Winger", "winger"],
+        q2: ["capybara", "Capybara Cult", "capybara cult", "Heads knees toes"],
+        q3: ["jukerson", "Mr. Pixel", "Aksh", "Pranjal"],
+        q4: ["mutiple", "infinite", "infinity", "Multiple", "Infinite"],
+        q5: ["6THD"],
+        q6: ["Three Player Obby"],
+        q7: ["Feel Good inc", "feel good inc"],
+        q8: ["Billie Eilish", "billie eilish"],
       };
 
       let allCorrect = true;
 
       for (let key in answers) {
         const userAnswer = document.getElementById(key).value.trim().toLowerCase();
-        if (userAnswer !== answers[key]) {
+        if (!answers[key].includes(userAnswer)) {
           allCorrect = false;
           break;
         }
       }
 
       if (allCorrect) {
-        window.location.href = "/step2";
+        window.location.href = "/step2";  // Redirect to the next step
       } else {
         alert("Did you try getting good? WRONG ANSWERS BUDDY");
       }
